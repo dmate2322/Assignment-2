@@ -47,6 +47,11 @@ void PlayScene::start()
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
+	//Background Music
+	SoundManager::Instance().load("../Assets/audio/Background Music.mp3", "bgm", SOUND_MUSIC);
+	SoundManager::Instance().playMusic("bgm", -1, 0);
+	SoundManager::Instance().setMusicVolume(1);
+	
 	// Setup the Grid
 	m_buildGrid();
 	auto offset = glm::vec2(Config::TILE_SIZE * 0.5f, Config::TILE_SIZE * 0.5f);
@@ -72,6 +77,17 @@ void PlayScene::start()
 
 	m_buildMines();
 	m_spawnMines();
+
+	/* Instructions Label */
+	m_pInstructionsLabel = new Label("Press the backtick (`) character to toggle ImGui Displaylist", "Consolas");
+	m_pInstructionsLabel->getTransform()->position = glm::vec2(Config::SCREEN_WIDTH * 0.5f, 40.0f);
+
+	addChild(m_pInstructionsLabel);
+
+	m_pInstructionsLabel = new Label("Click the boxes to turn on Seek, Arrival, Flee, or Obstacle Avoidance ", "Consolas");
+	m_pInstructionsLabel->getTransform()->position = glm::vec2(Config::SCREEN_WIDTH * 0.5f, 60.0f);
+
+	addChild(m_pInstructionsLabel);
 	
 	
 

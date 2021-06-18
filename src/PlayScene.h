@@ -32,6 +32,7 @@ private:
 	glm::vec2 m_mousePosition;
 
 	// Game Objects
+	Label* m_pInstructionsLabel;
 	Target* m_pTarget;
 	StarShip* m_pStarShip;
 
